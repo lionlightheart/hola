@@ -337,6 +337,28 @@ void linea1234(int ***matriz, int r1, int r2, int r3, int r4, int sol, int **mat
     }
 }
 
+
+int datos(char **test, int **test1)
+{
+    int n;
+    int m;
+    
+    n = 0;
+    m = 1;
+    while (test[1][n] != '\0')
+    {
+        if ((test[1][n] > '0' && test[1][n] <= '4') && (test[1][n+1] == ' '))
+        {
+            test1[1][m]=test[1][n]-48;
+            printf("%c", test[1][n]);
+            m++;
+        }
+        n++;
+        n++;
+    }
+    return(0);
+}
+
 int main(int rt, char **test)
 {
 	int rows;
@@ -345,6 +367,7 @@ int main(int rt, char **test)
 	int ***array;
     int **matriz1234;
     int ***matsol;
+    int **test1;
 	long int n;
 	int r;
 	int c;
@@ -362,7 +385,6 @@ int main(int rt, char **test)
         return (0);
     }
     
-    printf(" %c ", test[1][1]);
     
     rows = 7;
 	cols = 6;
@@ -409,6 +431,19 @@ int main(int rt, char **test)
         }
         r=0;
     
+    rows = 2;
+    cols = 100;
+    
+    test1=(int **) malloc (sizeof(int *)*rows);
+    r = 0;
+    while (r++ < rows)
+    {
+        test1[r]=(int *) malloc (sizeof(int)*cols);
+    }
+    
+    
+    
+    datos(test, test1);
     matriz24(matriz1234);
     
     n= 1;
