@@ -71,7 +71,6 @@ void filter(int ***matini, int ***matsol, int nsol)
         flag =0;
         n++;
     }
-    printf("   %d ", m);
     nsol = m;
     
 }
