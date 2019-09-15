@@ -71,6 +71,7 @@ int main(int rt, char **test)
     nsol = 0;
     if (rt != 2)
     {
+        write(1, "Error\n", 6);
         return (0);
     }
 
@@ -144,8 +145,9 @@ int main(int rt, char **test)
     
     
     if (dataint(test, test1) != 1)
-    return (0);
-    
+    {   write(1, "Error\n", 6);
+        return (0);
+    }
     
     
     matrix24(matrix1234);
@@ -159,10 +161,9 @@ int main(int rt, char **test)
     solve(test1, sol);
     n = solve(test1, sol);
     if (n == 0)
-    {    printf(" No hay solucion ");
+    {    write(1, "Error\n", 6);
         return(0);
     }
-        printf(" %ld ", n);
     drawmatrix(matsol, n+1);
     
 }
