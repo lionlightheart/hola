@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verizq.c                                           :+:      :+:    :+:   */
+/*   verabajo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpanader <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 11:17:04 by rpanader          #+#    #+#             */
-/*   Updated: 2019/09/15 16:38:02 by rpanader         ###   ########.fr       */
+/*   Created: 2019/09/15 17:27:26 by rpanader          #+#    #+#             */
+/*   Updated: 2019/09/15 17:45:30 by rpanader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int g_s;
-int g_v;
+int g_hi;
+int g_ro;
 
-void	verizq(int ***matriz, int nsol)
+void	verabajo(int ***matriz, int nsol)
 {
 	int n;
 	int col;
@@ -22,22 +22,22 @@ void	verizq(int ***matriz, int nsol)
 	n = 1;
 	col = 1;
 	row = 1;
-	g_s = 0;
+	g_ro = 0;
 	while (n++ <= nsol)
 	{
-		g_v = 0;
-		while (row++ < 5)
-			while (col++ < 5)
-			{
-				if (g_s < matriz[n][row][col])
+		g_hi = 0;
+		while (col++ < 5)
+		{
+			while (row++ < 5)
+				if (g_ro < matriz[n][row][col])
 				{
-					g_v++;
-					g_s = matriz[n][row][col];
+					g_hi++;
+					g_ro = matriz[n][row][col];
 				}
-				matriz[n][row][0] = g_v;
-				g_s = 0;
-				col = 1;
-			}
-		row = 1;
+			matriz[n][6][col] = g_hi;
+			g_ro = 0;
+			row = 1;
+		}
+		col = 1;
 	}
 }

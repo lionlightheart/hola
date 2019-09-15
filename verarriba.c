@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verizq.c                                           :+:      :+:    :+:   */
+/*   verarriba.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpanader <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 11:17:04 by rpanader          #+#    #+#             */
-/*   Updated: 2019/09/15 16:38:02 by rpanader         ###   ########.fr       */
+/*   Created: 2019/09/15 16:38:13 by rpanader          #+#    #+#             */
+/*   Updated: 2019/09/15 17:26:06 by rpanader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int g_s;
-int g_v;
+int g_cont;
+int g_hmax;
 
-void	verizq(int ***matriz, int nsol)
+void	verarriba(int ***matriz, int nsol)
 {
 	int n;
 	int col;
@@ -21,23 +21,23 @@ void	verizq(int ***matriz, int nsol)
 
 	n = 1;
 	col = 1;
-	row = 1;
-	g_s = 0;
+	row = 4;
+	g_hmax = 0;
 	while (n++ <= nsol)
 	{
-		g_v = 0;
-		while (row++ < 5)
-			while (col++ < 5)
+		g_cont = 0;
+		while (col++ < 5)
+			while (row-- > 0)
 			{
-				if (g_s < matriz[n][row][col])
+				if (g_hmax < matriz[n][row][col])
 				{
-					g_v++;
-					g_s = matriz[n][row][col];
+					g_cont++;
+					g_hmax = matriz[n][row][col];
 				}
-				matriz[n][row][0] = g_v;
-				g_s = 0;
-				col = 1;
+				matriz[n][5][col] = g_cont;
+				g_hmax = 0;
+				row = 4;
 			}
-		row = 1;
+		col = 1;
 	}
 }
