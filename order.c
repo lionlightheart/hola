@@ -1,30 +1,32 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   order.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsoriano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/15 18:29:25 by jsoriano          #+#    #+#             */
+/*   Updated: 2019/09/15 18:30:01 by jsoriano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void order(int ***array, int **sol, int nsol)
+void	order(int ***array, int **sol, int nsol)
 {
-    int n;
-    int i;
-    
-    n = 1;
-    i = 1;
-    while (n <= nsol)
-    {
-        while(i<5)
-        {
-            
-            sol[n][i+8]=array[n][i][0];
-            sol[n][i+12]=array[n][i][5];
-            sol[n][i]=array[n][6][i];
-            sol[n][i+4]=array[n][5][i];
-            
-            
-            i++;
-        }
-        i =1 ;
-        
-        n++;
-    }
-    
+	int n;
+	int i;
+
+	n = 1;
+	while (n <= nsol)
+	{
+		i = 1;
+		while (i < 5)
+		{
+			sol[n][i + 8] = array[n][i][0];
+			sol[n][i + 12] = array[n][i][5];
+			sol[n][i] = array[n][6][i];
+			sol[n][i + 4] = array[n][5][i];
+			i++;
+		}
+		n++;
+	}
 }
